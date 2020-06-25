@@ -1,0 +1,15 @@
+---
+- name: Meraki Query
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+   - name: List all networks associated to the {{ org_name }} organization
+     meraki_network:
+      state: query
+      org_name: "{{ org_name }}"
+     register: network
+
+   - name: Show list
+     debug:
+      var: network

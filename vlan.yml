@@ -1,0 +1,16 @@
+---
+- name: Meraki Playbook to create a VLAN
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Create a VLAN.
+      meraki_vlan:
+        org_name: "{{ org_name }}"
+        net_name: "{{ net_name }}"
+        state: present
+        vlan_id: "{{ new_vlan_id }}"
+        name: "{{ subnet_name }}"
+        subnet: "{{ subnet_cidr }}"
+        appliance_ip: "{{ gather_ip }}"
+      delegate_to: localhost
